@@ -1,5 +1,7 @@
 package com.structure.demo.linkedListDemo;
 
+import java.util.Stack;
+
 /**
  * @author zhangfeng
  * @date 2019/8/8 10:29 AM
@@ -49,10 +51,40 @@ public class SingleLinkedListDemo {
 //        linkedListStucture.list();
 
 
-        System.out.println("反转单链表");
-        reverseSingleLinkedList(linkedListStucture.getHead());
-        linkedListStucture.list();
+//        System.out.println("反转单链表");
+//        reverseSingleLinkedList(linkedListStucture.getHead());
+//        linkedListStucture.list();
+
+
+        System.out.println("逆序打印单链表");
+
+        reverseSingleLinkedListByStack(linkedListStucture.getHead());
     }
+
+    /**
+     * 使用 stack 逆序打印单链表
+     * 没有更改原来的单链表的结构
+     * @param head
+     */
+    public static void reverseSingleLinkedListByStack (HeroNode head) {
+        if (head == null || head.getNext() == null) {
+            System.out.println("单链表为空，请先添加");
+            return;
+        }
+
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode cur = head.getNext();
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.getNext();
+        }
+
+        while (stack.size() >0) {
+            System.out.println(stack.pop());
+        }
+    }
+
+
 
     /**
      * 反转单链表
